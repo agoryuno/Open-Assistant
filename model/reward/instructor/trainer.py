@@ -61,6 +61,10 @@ class RankTrainer(Trainer):
 
     def compute_loss(self, model, inputs, return_outputs=False):
         # forward pass
+        outputs = model(**inputs)
+        logits = outputs.get("logits").view(-1, 2)
+        if self.loss_function == "rank":
+            loss = self.loss_fct(logits[:, 0], logits[:, 1])
         else:
             loss = self.loss_fct(logits, 
                 torch.zeros(logits.shape[0], 
