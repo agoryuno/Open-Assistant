@@ -5,7 +5,7 @@ from uuid import UUID, uuid4
 
 import pydantic
 from oasst_shared.exceptions import OasstErrorCode
-from pydantic import BaseModel, Field, conint, conlist, constr
+from pydantic import BaseModel, Field
 
 
 class TaskRequestType(str, enum.Enum):
@@ -203,7 +203,7 @@ class TextReplyToMessage(Interaction):
     type: Literal["text_reply_to_message"] = "text_reply_to_message"
     message_id: str
     user_message_id: str
-    text: constr(min_length=1, strip_whitespace=True)
+    text: str
 
 
 class MessageRating(Interaction):
@@ -211,7 +211,7 @@ class MessageRating(Interaction):
 
     type: Literal["message_rating"] = "message_rating"
     message_id: str
-    rating: conint(gt=0)
+    rating: int
 
 
 class MessageRanking(Interaction):
@@ -219,7 +219,7 @@ class MessageRanking(Interaction):
 
     type: Literal["message_ranking"] = "message_ranking"
     message_id: str
-    ranking: conlist(item_type=int, min_items=1)
+    ranking: list[int]
 
 
 AnyInteraction = Union[

@@ -42,7 +42,7 @@ export function UserMenu() {
                 className="flex items-center gap-4 p-1 lg:pr-6 rounded-full transition-colors duration-300"
               >
                 <Image
-                  src={session.user.image || "/images/temp-avatars/av1.jpg"}
+                  src="/images/temp-avatars/av5.jpg"
                   alt="Profile Picture"
                   width="36"
                   height="36"

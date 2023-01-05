@@ -25,11 +25,4 @@ export const getTransparentHeaderLayout = (page: React.ReactElement) => (
   </div>
 );
 
-export const getDashboardLayout = (page: React.ReactElement) => (
-  <div className="grid grid-rows-[min-content_1fr_min-content] h-full justify-items-stretch">
-    <Header transparent={true} />
-    {page}
-  </div>
-);
-
 export const noLayout = (page: React.ReactElement) => page;

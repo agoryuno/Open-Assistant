@@ -1,7 +1,6 @@
 import { Box, useColorMode } from "@chakra-ui/react";
 import Head from "next/head";
-
-import { getDashboardLayout } from "src/components/Layout";
+import { Header } from "src/components/Header";
 import { LeaderboardTable, SideMenu, TaskOption } from "src/components/Dashboard";
 import { colors } from "styles/Theme/colors";
 
@@ -28,6 +27,11 @@ const Dashboard = () => {
   );
 };
 
-Dashboard.getLayout = (page) => getDashboardLayout(page);
+Dashboard.getLayout = (page) => (
+  <div className="grid grid-rows-[min-content_1fr_min-content] h-full justify-items-stretch">
+    <Header transparent={true} />
+    {page}
+  </div>
+);
 
 export default Dashboard;

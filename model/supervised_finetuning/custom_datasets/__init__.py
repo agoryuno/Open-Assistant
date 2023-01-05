@@ -2,8 +2,6 @@ from datasets import load_dataset
 from sklearn.model_selection import train_test_split
 from torch.utils.data import Dataset, Subset
 
-QA_SPECIAL_TOKENS = {"Question": "<question>", "Answer": "<answer>"}
-
 
 class SquadV2Dataset(Dataset):
     def __init__(self, cache_dir, split):

@@ -1,6 +1,6 @@
 import { useColorMode } from "@chakra-ui/react";
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { LoadingScreen } from "src/components/Loading/LoadingScreen";
 import { Sortable } from "src/components/Sortable/Sortable";
 import { SurveyCard } from "src/components/Survey/SurveyCard";
@@ -31,12 +31,6 @@ const RankInitialPrompts = () => {
       setTasks((oldTasks) => [...oldTasks, newTask]);
     },
   });
-
-  useEffect(() => {
-    if (tasks.length == 0) {
-      mutate();
-    }
-  }, [tasks]);
 
   const submitResponse = (task) => {
     trigger({
