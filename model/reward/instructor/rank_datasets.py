@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
     author: theblackcat102
 
@@ -48,8 +49,20 @@ class DataCollatorForPairRank:
         batch_size = 0
         for question, pairs in features:
             for (pos, neg) in pairs:
-                flatten_features.append(self.tokenizer(question, pos, truncation=True, max_length=self.max_length))
-                flatten_features.append(self.tokenizer(question, neg, truncation=True, max_length=self.max_length))
+                flatten_features.append(
+                    self.tokenizer(
+                        question, 
+                        pos, 
+                        truncation=True, 
+                        max_length=self.max_length)
+                    )
+                flatten_features.append(
+                    self.tokenizer(
+                        question, 
+                        neg, 
+                        truncation=True, 
+                        max_length=self.max_length)
+                    )
                 batch_size += 1
 
         batch = self.tokenizer.pad(
@@ -118,7 +131,7 @@ class HFSummary(Dataset):
         self.index2summary = {}
         self.max_comparison_per_sample = max_comparison_per_sample
         major_split = split if "train" == split else "validation"
-        dataset = load_dataset("openai/summarize_from_feedback", "comparisons")[major_split]
+        dataset = load_dataset("Tristan/summarize_from_feedback", "comparisons")[major_split]
         for data in dataset:
             if (
                 "extra" in data
